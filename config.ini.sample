@@ -1,0 +1,15 @@
+[default]
+directory = ./
+processed_dir = ./processed
+interval = 10
+
+# PDFメタデータ用
+author = Coela
+producer = PDF2TEXT
+title = "Sample Title"
+subject = "Sample Subject"
+creator = "Document Scanner"
+customfield = "CustomValue"
+
+# ページ設定
+page_option = -1
