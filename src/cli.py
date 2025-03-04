@@ -32,10 +32,11 @@ def cli(ctx, config):
 def direct(ctx):
     cfg = ctx.obj["config_data"]
     directory = cfg.get("directory", "./")
-    processed_dir = cfg.get("processed_dir", "./processed")
+    processed_pdf = cfg.get("processed_pdf", "./processed_pdf")
+    processed_text = cfg.get("processed_text", "./processed_text")
     interval = int(cfg.get("interval", 10))
 
-    direct_watch(directory, processed_dir, interval, config_data=cfg)
+    direct_watch(directory, processed_pdf, processed_text, interval, config_data=cfg)
 
 
 @cli.group(help="疑似サービス操作")
@@ -48,10 +49,11 @@ def service(ctx):
 @click.pass_context
 def process(ctx, file):
     cfg = ctx.obj["config_data"]
-    processed_dir = cfg.get("processed_dir", "./processed")
+    processed_pdf = cfg.get("processed_pdf", "./processed_pdf")
+    processed_text = cfg.get("processed_text", "./processed_text")
 
     # ここで page_option は config_data に書いてあるものを使う
-    process_single_pdf(pdf_path=file, processed_dir=processed_dir, config_data=cfg)
+    process_single_pdf(pdf_path=file, processed_pdf=processed_pdf, processed_text=processed_text, config_data=cfg)
 
 
 if __name__ == "__main__":

@@ -1,6 +1,9 @@
 [default]
-directory = ./
-processed_dir = ./processed
+directory = ./mnt/pdf
+processed_pdf = ./mnt/text/pdf
+processed_text = ./mnt/text/text
+llm_models = ./mnt/models
+
 interval = 10
 
 # PDFメタデータ用

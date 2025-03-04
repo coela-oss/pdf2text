@@ -147,7 +147,8 @@ def is_searchable_pdf(pdf_path):
 
 
 def process_single_pdf(pdf_path: str,
-                       processed_dir: str,
+                       processed_pdf: str,
+                       processed_text: str,
                        config_data: Optional[dict] = None):
     """
     単一PDFを処理するメイン関数。
@@ -183,22 +184,28 @@ def process_single_pdf(pdf_path: str,
     extracted = extract_pdf_text(pdf_path, page_option)
 
     # 2) メタデータ設定
-    temp_pdf = pdf_path + ".temp.pdf"
-    apply_pdf_metadata(
-        input_pdf=pdf_path,
-        extracted_text=extracted,
-        output_pdf=temp_pdf,
-        config_data=config_data
-    )
-
+    #temp_pdf = pdf_path + ".temp.pdf"
+    #apply_pdf_metadata(
+    #    input_pdf=pdf_path,
+    #    extracted_text=extracted,
+    #    output_pdf=temp_pdf,
+    #    config_data=config_data
+    #)
     # 元ファイルを削除してリネーム
-    os.remove(pdf_path)
-    os.rename(temp_pdf, pdf_path)
+    #os.remove(pdf_path)
+    #os.rename(temp_pdf, pdf_path)
+    
+    text_file_path = os.path.splitext(pdf_path)[0] + ".search.txt"
+    with open(text_file_path, "w", encoding="utf-8") as f:
+        f.write(extracted)
+
 
     # 3) 処理後ディレクトリへ移動
-    if not os.path.exists(processed_dir):
-        os.makedirs(processed_dir, exist_ok=True)
+    #if not os.path.exists(processed_dir):
+    #    os.makedirs(processed_dir, exist_ok=True)
 
-    dst_path = os.path.join(processed_dir, os.path.basename(pdf_path))
-    shutil.move(pdf_path, dst_path)
-    print(f"[OK] Processed PDF moved to: {dst_path}")
+    pdf_dst_path = os.path.join(processed_pdf, os.path.basename(pdf_path))
+    text_dst_path = os.path.join(processed_text, os.path.basename(text_file_path))
+    shutil.move(pdf_path, pdf_dst_path)
+    shutil.move(text_file_path, text_dst_path)
+    print(f"[OK] Processed PDF2Text: {text_file_path}")

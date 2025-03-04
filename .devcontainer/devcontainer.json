@@ -3,5 +3,28 @@
 {
 	"name": "pdf2text",
 	"image": "mcr.microsoft.com/devcontainers/python:1-3.12-bullseye",
-	"postCreateCommand": "pip install --user -r requirements.txt"	
+	"postCreateCommand": "pip install --upgrade pip && pip install --user -r requirements.txt",
+	"postStartCommand": ". /workspace/gitconfig.env && git config --global user.name \"$GIT_USER\" && git config --global user.email \"$GIT_EMAIL\"",
+	"mounts": [
+		{
+			"source": "${localWorkspaceFolder}/gitconfig.env",
+			"target": "/workspace/gitconfig.env",
+			"type": "bind"
+		},
+		{
+			"source": "C:\\Colea\\pdf",
+			"target": "/workspaces/pdf2text/mnt/pdf",
+			"type": "bind"
+		},
+		{
+			"source": "C:\\Coela\\text",
+			"target": "/workspaces/pdf2text/mnt/text",
+			"type": "bind"
+		},
+		{
+			"source": "C:\\Coela\\llm\\models",
+			"target": "/workspaces/pdf2text/mnt/models",
+			"type": "bind"
+		}
+	]
 }
