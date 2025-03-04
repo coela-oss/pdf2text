@@ -15,10 +15,10 @@ COPY src /app/src
 COPY config.ini /app/config.ini
 
 # エントリポイントスクリプトを追加
-COPY build/entrypoint.sh /app/entrypoint.sh
-RUN chmod +x /app/entrypoint.sh
+#COPY build/entrypoint.sh /app/entrypoint.sh
+#RUN chmod +x /app/entrypoint.sh
 
 # エントリポイントを設定
-ENTRYPOINT ["/app/entrypoint.sh"]
+ENTRYPOINT ["/app/src/cli.py"]
 
 CMD [ "--help" ]

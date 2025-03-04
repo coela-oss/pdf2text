@@ -6,11 +6,7 @@
 	"postCreateCommand": "pip install --upgrade pip && pip install --user -r requirements.txt",
 	"postStartCommand": ". /workspace/gitconfig.env && git config --global user.name \"$GIT_USER\" && git config --global user.email \"$GIT_EMAIL\"",
 	"mounts": [
-		{
-			"source": "${localWorkspaceFolder}/gitconfig.env",
-			"target": "/workspace/gitconfig.env",
-			"type": "bind"
-		},
+		"type=bind,source=.gitconfig,target=/home/vscode/.gitconfig",
 		{
 			"source": "C:\\Colea\\pdf",
 			"target": "/workspaces/pdf2text/mnt/pdf",
