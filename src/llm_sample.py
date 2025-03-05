@@ -9,7 +9,7 @@ model_path = "./mnt/models/models--microsoft--Phi-3-mini-4k-instruct-gguf/"
 model_file = "./mnt/models/models--microsoft--Phi-3-mini-4k-instruct-gguf/Phi-3-mini-4k-instruct-q4.gguf"
 model = GPT4All(
     "Phi-3-mini-4k-instruct-q4.gguf",
-    device="gpu",
+    device="cpu",
     model_path=model_path,
     ngl=8,
     n_threads=8,
