@@ -1,5 +1,5 @@
 pdfminer.six
 pypdf
 click
-torch
-transformers
+gpt4all
+openvino
