@@ -11,6 +11,8 @@ ENV DEBIAN_FRONTEND=noninteractive \
 RUN apt-get update && apt-get install -y \
     wget \
     clinfo \
+    vulkan-tools \
+    mesa-vulkan-drivers \
     && rm -rf /var/lib/apt/lists/*
 
 # Intel GPU 用ドライバ・ランタイムのインストール
