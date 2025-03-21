@@ -61,6 +61,7 @@ def analyze_pdf_pages_with_summary(file_path: str) -> Dict[str, Any]:
     summary = {
         "total_pages": 0,
         "text_pages": 0,
+        "image_include_pages": 0,
         "image_only_pages": 0,
         "blank_pages": 0,
     }
@@ -93,6 +94,8 @@ def analyze_pdf_pages_with_summary(file_path: str) -> Dict[str, Any]:
         summary["total_pages"] += 1
         if has_text:
             summary["text_pages"] += 1
+        elif has_image:
+            summary["image_include_pages"] += 1
         elif is_image_only:
             summary["image_only_pages"] += 1
         elif is_blank:
