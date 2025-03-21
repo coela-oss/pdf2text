@@ -4,3 +4,4 @@ __pycache__
 mnt
 locales/**/LC_MESSAGES/*.mo
 config.yaml
+docs/_build/

@@ -4,6 +4,6 @@ from util.config import _
 from pdf2text.extract import extract_pdf_text
 
 @task(help={"name": _("Extract Pdf")})
-def extract_pdf(c, path="./"):
+def extract_pdf(c, path="./"): # TODO Path or Stored PDF UUID
     text = extract_pdf_text(path, config.pdf.page_option)
     print(f'Extract PDF Text: {text}')

@@ -30,11 +30,13 @@ def load_config(path: str = "config.yaml") -> AppConfig:
     return AppConfig(**raw)
 
 def setup_i18n(lang="en"):
-    root_dir = Path(__file__).resolve().parent.parent.parent
     localedir = os.path.join(root_dir, 'locales')
     gettext.bindtextdomain('messages', localedir)
     gettext.textdomain('messages')
     return gettext.translation('messages', localedir, languages=[lang], fallback=True).gettext
 
-config = load_config()
+
+root_dir = Path(__file__).resolve().parent.parent.parent
+config_file_path = os.path.join(root_dir, 'config.yaml')
+config = load_config(config_file_path)
 _ = setup_i18n(config.default.lang)
