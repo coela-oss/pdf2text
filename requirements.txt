@@ -1,6 +1,0 @@
-pdfminer.six
-pypdf
-click
-gpt4all
-openvino
-vulkan
