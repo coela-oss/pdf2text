@@ -1,6 +1,7 @@
 import click
 from invoke import Context
 from cli.develop import develop
+from workflow.main import meta_pdf
 from workflow.main import extract_pdf
 from util.config import _
 
@@ -14,6 +15,12 @@ def entry():
 def extract(path):
     ctx = Context()
     extract_pdf(ctx, path=path)
+
+@entry.command(help=_("Extract Meta Info from PDF"))
+@click.option("--path", required=True, help=_("Path to the PDF"))
+def meta(path):
+    ctx = Context()
+    meta_pdf(ctx, path=path)
 
 
 entry.add_command(develop)

@@ -1,6 +1,5 @@
 import os
 from pdfminer.high_level import extract_text
-from pdf2text.meta import is_searchable_pdf
 
 
 def extract_pdf_text(pdf_path: str, page_option: int) -> str:
@@ -11,10 +10,6 @@ def extract_pdf_text(pdf_path: str, page_option: int) -> str:
     """
     if not os.path.isfile(pdf_path):
         print(f"Warning: PDFファイルが見つかりません: {pdf_path}")
-        return ""
-
-    if not is_searchable_pdf(pdf_path):
-        print(f"Error: 検索可能なPDFではありません。: {pdf_path}")
         return ""
 
     if page_option == 0:
