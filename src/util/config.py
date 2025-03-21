@@ -1,40 +1,21 @@
 from pathlib import Path
 from pydantic import BaseModel
 import yaml
-from typing import Optional
 import yaml
 import gettext
 import os
 
-class DeployConfig(BaseModel):
-    environment: str
-    region: str
-    bucket: str
-
-class ProjectConfig(BaseModel):
-    name: str
-    version: str
+class DatabaseConfig(BaseModel):
+    url: str
 
 class PdfConfig(BaseModel):
-    author: Optional[str]
-    producer: Optional[str]
-    title: Optional[str]
-    subject: Optional[str]
-    creator: Optional[str]
-    customfield: Optional[str]
     page_option: int
 
 class DefaultConfig(BaseModel):
     lang: str
-    directory: str
-    processed_pdf: str
-    processed_text: str
-    llm_models: str
-    interval: int
 
 class AppConfig(BaseModel):
-    project: ProjectConfig
-    deploy: DeployConfig
+    database: DatabaseConfig
     pdf: PdfConfig
     default: DefaultConfig
 

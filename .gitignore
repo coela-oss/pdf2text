@@ -1,7 +1,6 @@
 __pycache__
 *.pdf
 .gitconfig
-config.ini
 mnt
-models
 locales/**/LC_MESSAGES/*.mo
+config.yaml
