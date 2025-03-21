@@ -6,7 +6,11 @@ import gettext
 import os
 
 class DatabaseConfig(BaseModel):
-    url: str
+    user: str
+    password: str
+    host: str
+    port: int
+    dbname: str
 
 class PdfConfig(BaseModel):
     page_option: int

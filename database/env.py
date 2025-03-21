@@ -4,9 +4,11 @@ from sqlalchemy import engine_from_config
 from sqlalchemy import pool
 
 from alembic import context
+import urllib
 
 from util.config import config as pdf2config
 from models import Base
+
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
@@ -17,7 +19,10 @@ config = context.config
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
-config.set_main_option("sqlalchemy.url", pdf2config.database.url)
+encoded_pw = urllib.parse.quote_plus(pdf2config.database.password).replace('%', '%%')
+
+connection_string = f'postgresql+psycopg2://{pdf2config.database.user}:{encoded_pw}@{pdf2config.database.host}:{pdf2config.database.port}/{pdf2config.database.dbname}'
+config.set_main_option("sqlalchemy.url", connection_string)
 
 # add your model's MetaData object here
 # for 'autogenerate' support

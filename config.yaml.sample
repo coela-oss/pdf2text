@@ -5,4 +5,8 @@ pdf:
   page_option: 0
 
 database:
-  url: "postgresql+psycopg2://user:password@host:5432/dbname"
+  user: user
+  password: password
+  host: host
+  port: port
+  dbname: dbname
